@@ -10,9 +10,10 @@ function ent = entropy_Feature(data)
     for i = 1:n_trials
         for j = 1:n_channels
             selected_data = data(j,:,i);
-            h1 = histogram(selected_data, 'Normalization', 'Probability');
-            p = h1.Values;
-            ent(i,j) = -sum(p.*log2(p));
+%             h1 = histogram(selected_data, 'Normalization', 'Probability');
+%             p = h1.Values;
+%             -sum(p.*log2(p));
+            ent(i,j) = entropy(selected_data);
         end
     end
   
