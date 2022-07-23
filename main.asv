@@ -795,14 +795,15 @@ selected_features_PSO = reshape(all_features_mat(:,:,selected_features_index),..
 clc; 
 
 n_test_trials = 40;
-test_features_PSO = zeros(length(selected_features_index), n_test_trials);
+n_channels = 30;
+all_features_test_mat = zeros(n_test_trials, length(all_features_test)*n_channels);
 
-for i = 1:length(selected_features_index)
-    test_features_PSO(i,:) = all_features_test{findeds_feat(selected_features_index(i))}...
-        (:,finded_chan(selected_features_index(i)));
+for i = 1:length(all_features_test)
+    all_features_test_mat(:,(i-1)*n_channels+1:i*n_channels) = ...
+        all_features_test{i};
 end
 
-test_features_PSO = (test_features_PSO - mean_features)/std_features;
+test_features_PSO = all_features_test_mat(:,selected_features_index);
 
 
 %% Train MLP
@@ -889,7 +890,7 @@ while i <= number_of_rep
     train_acc_pso = sum(predicted_y_train_pso == training_label)/length(predicted_y_train_pso)
 
     if(train_acc_pso >= 0.65)
-        test_labels(i,:) = net(test_features_PSO);
+        test_labels(i,:) = net(test_features_PSO');
         i = i+1;
     end
 end
@@ -924,7 +925,7 @@ for i = 1:k_fold
     training_label = Train_Label(train_ind);
 
     % train the network and get the predicted outputs
-    net_rbf = newrb(training_data', training_label, 0.3, 6);
+    net_rbf = newrb(training_data', training_label, 0.3, 4);
     % view(net)
     predicted_y_pso = net_rbf(selected_features_PSO');
     predicted_y_val_pso = predicted_y_pso(val_data_starts(i):val_data_starts(i)+24);
