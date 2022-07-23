@@ -188,6 +188,10 @@ clc; close all;
 
 kurt_feature = kurtosis_Feature(Train_Data);
 
+% normalize features 
+[kurt_featurep, PS] = mapstd(kurt_feature');
+kurt_feature = kurt_featurep';
+
 n_class = 2;
 kurt_feature_classes = zeros(n_class, int16(size(kurt_feature, 1)/n_class),... 
     size(kurt_feature, 2));
@@ -206,6 +210,10 @@ all_features_name{end+1} = "kurt_feature for channel ";
 %%%%%% test data features
 kurt_feature_test = kurtosis_Feature(Test_Data);
 
+% normalize features 
+kurt_feature_testp = mapstd('apply',kurt_feature_test',PS);
+kurt_feature_test = kurt_feature_testp';
+
 all_features_test{end+1} =  kurt_feature_test;
 
 size(kurt_feature_test)
@@ -214,6 +222,10 @@ size(kurt_feature_test)
 clc; close all;
 
 skewness_feature = skewness_Feature(Train_Data);
+
+% normalize features 
+[skewness_featurep, PS] = mapstd(skewness_feature');
+skewness_feature = skewness_featurep';
 
 n_class = 2;
 skewness_feature_classes = zeros(n_class, int16(size(skewness_feature, 1)/n_class),... 
@@ -232,6 +244,10 @@ all_features_name{end+1} = "skew_feature for channel ";
 %%%%%% test data features
 skewness_feature_test = skewness_Feature(Test_Data);
 
+% normalize features 
+skewness_feature_testp = mapstd('apply',skewness_feature_test',PS);
+skewness_feature_test = skewness_feature_testp';
+
 all_features_test{end+1} =  skewness_feature_test;
 
 size(skewness_feature_test)
@@ -240,6 +256,10 @@ size(skewness_feature_test)
 clc; close all;
 
 lyapunov_feature = lyapunov_Feature(Train_Data, Fs);
+
+% normalize features 
+[lyapunov_featurep, PS] = mapstd(lyapunov_feature');
+lyapunov_feature = lyapunov_featurep';
 
 n_class = 2;
 lyapunov_feature_classes = zeros(n_class, int16(size(lyapunov_feature, 1)/n_class),...
@@ -259,6 +279,10 @@ all_features_name{end+1} = "lyapunov_feature for channel ";
 %%%%%% test data features
 lyapunov_feature_test = lyapunov_Feature(Test_Data, Fs);
 
+% normalize features 
+lyapunov_feature_testp = mapstd('apply',lyapunov_feature_test',PS);
+lyapunov_feature_test = lyapunov_feature_testp';
+
 all_features_test{end+1} =  lyapunov_feature_test;
 
 size(lyapunov_feature_test)
@@ -266,6 +290,11 @@ size(lyapunov_feature_test)
 clc; close all;
 
 entropy_feature = entropy_Feature(Train_Data);
+
+% normalize features 
+[entropy_featurep, PS] = mapstd(entropy_feature');
+entropy_feature = entropy_featurep';
+
 
 n_class = 2;
 entropy_feature_classes = zeros(n_class, int16(size(entropy_feature, 1)/n_class),...
@@ -286,6 +315,9 @@ all_features_name{end+1} = "entropy_feature for channel ";
 %%%%%% test data features
 entropy_feature_test = entropy_Feature(Test_Data);
 
+% normalize features 
+entropy_feature_testp = mapstd('apply',entropy_feature_test',PS);
+entropy_feature_test = entropy_feature_testp';
 
 all_features_test{end+1} =  entropy_feature_test;
 
@@ -295,6 +327,10 @@ size(entropy_feature_test)
 clc; close all;
 
 cordir_feature = cordir_Feature(Train_Data);
+
+% normalize features 
+[cordir_featurep, PS] = mapstd(cordir_feature');
+cordir_feature = cordir_featurep';
 
 n_class = 2;
 cordir_feature_classes = zeros(n_class, int16(size(cordir_feature, 1)/n_class),...
@@ -314,6 +350,9 @@ all_features_name{end+1} = "corrDimension_feature for channel ";
 %%%%%% test data features
 cordir_feature_test = cordir_Feature(Test_Data);
 
+% normalize features 
+cordir_feature_testp = mapstd('apply',cordir_feature_test',PS);
+cordir_feature_test = cordir_feature_testp';
 
 all_features_test{end+1} =  cordir_feature_test;
 
@@ -359,6 +398,10 @@ clc; close all;
 
 mean_freq_feature = mean_freq_Feature(Train_Data, Fs);
 
+% normalize features 
+[mean_freq_featurep, PS] = mapstd(mean_freq_feature');
+mean_freq_feature = mean_freq_featurep';
+
 n_class = 2;
 mean_freq_feature_classes = zeros(n_class, int16(size(mean_freq_feature, 1)/n_class),...
     size(mean_freq_feature, 2));
@@ -377,6 +420,10 @@ all_features_name{end+1} = "meanfreq_feature for channel ";
 %%%%%% test data features
 mean_freq_feature_test = mean_freq_Feature(Test_Data, Fs);
 
+% normalize features 
+mean_freq_feature_testp = mapstd('apply',mean_freq_feature_test',PS);
+mean_freq_feature_test = mean_freq_feature_testp';
+
 all_features_test{end+1} =  mean_freq_feature_test;
 
 size(mean_freq_feature_test)
@@ -385,6 +432,10 @@ size(mean_freq_feature_test)
 clc; close all;
 
 med_freq_feature = med_freq_Feature(Train_Data, Fs);
+
+% normalize features 
+[med_freq_featurep, PS] = mapstd(med_freq_feature');
+med_freq_feature = med_freq_featurep';
 
 n_class = 2;
 med_freq_feature_classes = zeros(n_class, int16(size(med_freq_feature, 1)/n_class),...
@@ -405,6 +456,10 @@ all_features_name{end+1} = "medfreq_feature for channel ";
 %%%%%% test data features
 med_freq_feature_test = med_freq_Feature(Test_Data, Fs);
 
+% normalize features 
+med_freq_feature_testp = mapstd('apply',med_freq_feature_test',PS);
+med_freq_feature_test = med_freq_feature_testp';
+
 all_features_test{end+1} =  med_freq_feature_test;
 
 size(med_freq_feature_test)
@@ -413,6 +468,19 @@ size(med_freq_feature_test)
 clc; close all;
 
 band_energy_feature = band_energy_Feature(Train_Data, Fs);
+
+% normalize features
+[band_energy_feature_b1, PS1] = mapstd(band_energy_feature(:,:,1)');
+band_energy_feature(:,:,1) = band_energy_feature_b1';
+[band_energy_feature_b2, PS2] = mapstd(band_energy_feature(:,:,2)');
+band_energy_feature(:,:,2) = band_energy_feature_b2';
+[band_energy_feature_b3, PS3] = mapstd(band_energy_feature(:,:,3)');
+band_energy_feature(:,:,3) = band_energy_feature_b3';
+[band_energy_feature_b4, PS4] = mapstd(band_energy_feature(:,:,4)');
+band_energy_feature(:,:,4) = band_energy_feature_b4';
+[band_energy_feature_b5, PS5] = mapstd(band_energy_feature(:,:,5)');
+band_energy_feature(:,:,5) = band_energy_feature_b5';
+
 
 n_class = 2;
 band_energy_feature_classes = zeros(n_class, int16(size(band_energy_feature, 1)/n_class),...
@@ -427,7 +495,7 @@ end
 
 size(band_energy_feature_classes)
 
-band = [ "All range","Delta", "Theta", "Alpha", "Betha"];
+band = ["All range", "Delta", "Theta", "Alpha", "Betha"];
 % feature names
 for j = 1:size(band_energy_feature_classes, 4)
     all_features_name{end+1} = "energy_feature for band " + band(j) + " channel ";
@@ -437,6 +505,17 @@ end
 %%%%%% test data features
 band_energy_feature_test = band_energy_Feature(Test_Data, Fs);
 
+% normalize features 
+band_energy_feature_test_b1 = mapstd('apply',band_energy_feature_test(:,:,1)',PS1);
+band_energy_feature_test(:,:,1) = band_energy_feature_test_b1';
+band_energy_feature_test_b2 = mapstd('apply',band_energy_feature_test(:,:,2)',PS2);
+band_energy_feature_test(:,:,2) = band_energy_feature_test_b2';
+band_energy_feature_test_b3 = mapstd('apply',band_energy_feature_test(:,:,3)',PS3);
+band_energy_feature_test(:,:,3) = band_energy_feature_test_b3';
+band_energy_feature_test_b4 = mapstd('apply',band_energy_feature_test(:,:,4)',PS4);
+band_energy_feature_test(:,:,4) = band_energy_feature_test_b4';
+band_energy_feature_test_b5 = mapstd('apply',band_energy_feature_test(:,:,5)',PS1);
+band_energy_feature_test(:,:,5) = band_energy_feature_test_b5';
 
 for i = 1:size(band_energy_feature_test, 3)
     all_features_test{end+1} =  band_energy_feature_test(:,:,i);
@@ -491,13 +570,6 @@ group_features_class2 = squeeze(all_training_features(2,:,:));
 group_features_both = zeros(120, length(findeds_feat));
 group_features_both(class1_trialnum, :) = group_features_class1;
 group_features_both(class2_trialnum, :) = group_features_class2;
-
-% normalize the features
-mean_features = mean(group_features_both, 'all'); 
-std_features = std(group_features_both, 0, 'all'); 
-group_features_both = (group_features_both - mean_features)/std_features;
-group_features_class1 = group_features_both(class1_trialnum, :);
-group_features_class2 = group_features_both(class2_trialnum, :);
 
 
 [size(group_features_class1); size(group_features_class2); size(group_features_both)]
@@ -564,7 +636,7 @@ end
 best_features_found = group_features_both(:,target_feature);
 save('best_features_found','best_features_found')
 
-%% best features founded eventually
+%% best features index founded eventually 
 clc; close all;
 
 best_features_final = [findeds_feat(target_feature), finded_chan(target_feature)];
@@ -574,51 +646,61 @@ best_features_final = [findeds_feat(target_feature), finded_chan(target_feature)
 clc; close all;
 
 
-trainFcn = 'trainlm';
-
-% create the network
-net = fitnet([20,10]  , trainFcn);
-view(net)
-
 % accuracy vectors
 k_fold = 5;
-train_acc = zeros(1,k_fold);
-val_acc = zeros(1,k_fold);
+
 
 val_data_starts = [1, 24, 48, 72, 96];
 
-for i = 1:k_fold
-    train_ind = 1:120;
+n_rep = 100;
+train_acc_reap = zeros(1,n_rep);
+val_acc_reap = zeros(1,n_rep);
 
-    % validation data
-    val_data = best_features_found(val_data_starts(i):val_data_starts(i)+24,:);
-    val_label = Train_Label(val_data_starts(i):val_data_starts(i)+24);
-    train_ind(val_data_starts(i):val_data_starts(i)+24) = [];
+for j = 1:n_rep
+    train_acc = zeros(1,k_fold);
+    val_acc = zeros(1,k_fold);
+    
+    trainFcn = 'trainlm';
 
-    % training data
-    training_data = best_features_found(train_ind,:);
-    training_label = Train_Label(train_ind);
+    % create the network
+    net = fitnet([5,5]  , trainFcn);
+    
+    for i = 1:k_fold
+        train_ind = 1:120;
 
-    % train the network and get the predicted outputs
-    [net , tr] = train(net, training_data', training_label);
-    predicted_y = net(best_features_found');
-    predicted_y_val = predicted_y(val_data_starts(i):val_data_starts(i)+24);
-    predicted_y_train = predicted_y(train_ind);
+        % validation data
+        val_data = best_features_found(val_data_starts(i):val_data_starts(i)+24,:);
+        val_label = Train_Label(val_data_starts(i):val_data_starts(i)+24);
+        train_ind(val_data_starts(i):val_data_starts(i)+24) = [];
 
-    % find the best threshold for making the outputs int
-    [X,Y,T,AUC,OPTROCPT] = perfcurve(training_label,predicted_y_train,1);
-    T_opt = T((X==OPTROCPT(1))&(Y==OPTROCPT(2)));
+        % training data
+        training_data = best_features_found(train_ind,:);
+        training_label = Train_Label(train_ind);
 
-    % binarize the outputs
-    predicted_y_val = (predicted_y_val >= T_opt);
-    predicted_y_train = (predicted_y_train >= T_opt);
+        % train the network and get the predicted outputs
+        [net , tr] = train(net, training_data', training_label);
+        predicted_y = net(best_features_found');
+        predicted_y_val = predicted_y(val_data_starts(i):val_data_starts(i)+24);
+        predicted_y_train = predicted_y(train_ind);
 
-    val_acc(i) = sum(predicted_y_val == val_label)/length(predicted_y_val);
-    train_acc(i) = sum(predicted_y_train == training_label)/length(predicted_y_train);
+        % find the best threshold for making the outputs int
+        [X,Y,T,AUC,OPTROCPT] = perfcurve(training_label,predicted_y_train,1);
+        T_opt = T((X==OPTROCPT(1))&(Y==OPTROCPT(2)));
+
+        % binarize the outputs
+        predicted_y_val = (predicted_y_val >= T_opt);
+        predicted_y_train = (predicted_y_train >= T_opt);
+
+        val_acc(i) = sum(predicted_y_val == val_label)/length(predicted_y_val);
+        train_acc(i) = sum(predicted_y_train == training_label)/length(predicted_y_train);
+    end
+    train_acc_reap(j) = mean(train_acc);
+    val_acc_reap(j) = mean(val_acc);
 end
-
-acc_val_kfold = mean(val_acc)
-train_acc_kfold = mean(train_acc)
+acc_val_kfold = mean(val_acc_reap)
+train_acc_kfold = mean(train_acc_reap)
+std_val_acc = std(val_acc_reap)
+std_train_acc = std(train_acc_reap)
 
 %% save the best features for test data
 clc; 
@@ -629,8 +711,6 @@ test_features = zeros(length(target_feature), n_test_trials);
 for i = 1:length(target_feature)
     test_features(i,:) = all_features_test{best_features_final(i,1)}(:,best_features_final(i,2));
 end
-
-test_features = (test_features - mean_features)/std_features;
 
 %% train the mlp with all data and get the outputs of MLP for the test data
 clc;
@@ -683,42 +763,50 @@ k_fold = 5;
 train_acc_rbf = zeros(1,k_fold);
 val_acc_rbf = zeros(1,k_fold);
 
-
 val_data_starts = [1, 24, 48, 72, 96];
 
-for i = 1:k_fold
-    train_ind = 1:120;
+n_rep = 100;
+train_acc_reap = zeros(1,n_rep);
+val_acc_reap = zeros(1,n_rep);
 
-    % validation data
-    val_data = best_features_found(val_data_starts(i):val_data_starts(i)+24,:);
-    val_label = Train_Label(val_data_starts(i):val_data_starts(i)+24);
-    train_ind(val_data_starts(i):val_data_starts(i)+24) = [];
-
-    % training data
-    training_data = best_features_found(train_ind,:);
-    training_label = Train_Label(train_ind);
-
+for j = 1:n_rep
     % train the network and get the predicted outputs
     net = newrb(training_data', training_label, 0.4, 5);
-    % view(net)
-    predicted_y = net(best_features_found');
-    predicted_y_val = predicted_y(val_data_starts(i):val_data_starts(i)+24);
-    predicted_y_train = predicted_y(train_ind);
+    for i = 1:k_fold
+        train_ind = 1:120;
 
-    % find the best threshold for making the outputs int
-    [X,Y,T,AUC,OPTROCPT] = perfcurve(training_label,predicted_y_train,1);
-    T_opt = T((X==OPTROCPT(1))&(Y==OPTROCPT(2)));
+        % validation data
+        val_data = best_features_found(val_data_starts(i):val_data_starts(i)+24,:);
+        val_label = Train_Label(val_data_starts(i):val_data_starts(i)+24);
+        train_ind(val_data_starts(i):val_data_starts(i)+24) = [];
 
-    % binarize the outputs
-    predicted_y_val = (predicted_y_val >= T_opt);
-    predicted_y_train = (predicted_y_train >= T_opt);
+        % training data
+        training_data = best_features_found(train_ind,:);
+        training_label = Train_Label(train_ind);
 
-    val_acc_rbf(i) = sum(predicted_y_val == val_label)/length(predicted_y_val);
-    train_acc_rbf(i) = sum(predicted_y_train == training_label)/length(predicted_y_train);
+        % view(net)
+        predicted_y = net(best_features_found');
+        predicted_y_val = predicted_y(val_data_starts(i):val_data_starts(i)+24);
+        predicted_y_train = predicted_y(train_ind);
+
+        % find the best threshold for making the outputs int
+        [X,Y,T,AUC,OPTROCPT] = perfcurve(training_label,predicted_y_train,1);
+        T_opt = T((X==OPTROCPT(1))&(Y==OPTROCPT(2)));
+
+        % binarize the outputs
+        predicted_y_val = (predicted_y_val >= T_opt);
+        predicted_y_train = (predicted_y_train >= T_opt);
+
+        val_acc_rbf(i) = sum(predicted_y_val == val_label)/length(predicted_y_val);
+        train_acc_rbf(i) = sum(predicted_y_train == training_label)/length(predicted_y_train);
+    end
+    val_acc_reap(j) = mean(val_acc_rbf);
+    train_acc_reap(j) = mean(train_acc_rbf);
 end
-
-acc_val_kfold_rbf = mean(val_acc_rbf)
-train_acc_kfold_rbf = mean(train_acc_rbf)
+acc_val_kfold_rbf = mean(val_acc_reap)
+train_acc_kfold_rbf = mean(train_acc_reap)
+std_val_rbf = std(val_acc_reap)
+std_train_rbf = std(train_acc_reap)
 
 %% train the rbf with all data and get the outputs of rbf for the test data
 
@@ -737,7 +825,7 @@ training_label = Train_Label;
 i = 1;
 while i <= number_of_rep
     % train the network and get the predicted outputs
-    net_rbf = newrb(training_data', training_label, 0.4, 7);
+    net_rbf = newrb(training_data', training_label, 0.4, 5);
 
     % view(net)
     predicted_y = net_rbf(best_features_found');
@@ -779,16 +867,12 @@ n_channel = 30;
 all_features_mat(1,:,:) = group_features_class1;
 all_features_mat(2,:,:) = group_features_class2;
 
-all_features_psoMEAN = mean(all_features_mat, 'all');
-all_features_psoSTD = std(all_features_mat, 0, 'all');
-all_features_mat = (all_features_mat - all_features_psoMEAN)/all_features_psoSTD;
-
 n_trials = 120;
 n_features = 12;
 swarm_PSO = PSO_feature_selection(all_features_mat, n_features);
 selected_features_index = mode(swarm_PSO, 1);
-selected_features_PSO = reshape(all_features_mat(:,:,selected_features_index),...
-    [n_trials, n_features]);
+selected_features_PSO(class1_trialnum,:) = all_features_mat(1,:,selected_features_index);
+selected_features_PSO(class2_trialnum,:) = all_features_mat(2,:,selected_features_index);
 
 
 %% save the best features for test data founded by PSO
@@ -796,63 +880,73 @@ clc;
 
 n_test_trials = 40;
 test_features_PSO = zeros(length(selected_features_index), n_test_trials);
+best_features_final_PSO = [findeds_feat(selected_features_index),...
+    finded_chan(selected_features_index)];
 
 for i = 1:length(selected_features_index)
-    test_features_PSO(i,:) = all_features_test{findeds_feat(selected_features_index(i))}...
-        (:,finded_chan(selected_features_index(i)));
+    test_features_PSO(i,:) = all_features_test{best_features_final_PSO(i,1)}...
+        (:,best_features_final_PSO(i,2));
 end
-
-test_features_PSO = (test_features_PSO - mean_features)/std_features;
 
 
 %% Train MLP
 %%%%%%%%%%%%%%%%%%%%%%%%% with PSO features %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clc; close all;
-trainFcn = 'trainlm';
-
-% create the network
-net = fitnet([20, 10]  , trainFcn);
 
 % accuracy vectors
 k_fold = 5;
-train_acc_pso = zeros(1,k_fold);
-val_acc_pso = zeros(1,k_fold);
+n_rep = 100;
+val_acc_pso_rep = zeros(1,n_rep);
+train_acc_pso_rep = zeros(1,n_rep);
 
 val_data_starts = [1, 24, 48, 72, 96];
 
-for i = 1:k_fold
-    train_ind = 1:120;
+for j = 1:n_rep
+    train_acc_pso = zeros(1,k_fold);
+    val_acc_pso = zeros(1,k_fold);
+    trainFcn = 'trainlm';
 
-    % validation data
-    val_data = selected_features_PSO(val_data_starts(i):val_data_starts(i)+24,:);
-    val_label = Train_Label(val_data_starts(i):val_data_starts(i)+24);
-    train_ind(val_data_starts(i):val_data_starts(i)+24) = [];
+    % create the network
+    net = fitnet([20, 10]  , trainFcn);
+    
+    for i = 1:k_fold
+        train_ind = 1:120;
 
-    % training data
-    training_data = selected_features_PSO(train_ind,:);
-    training_label = Train_Label(train_ind);
+        % validation data
+        val_data = selected_features_PSO(val_data_starts(i):val_data_starts(i)+24,:);
+        val_label = Train_Label(val_data_starts(i):val_data_starts(i)+24);
+        train_ind(val_data_starts(i):val_data_starts(i)+24) = [];
 
-    % train the network and get the predicted outputs
-    [net , tr] = train(net, training_data', training_label);
-    predicted_y_pso = net(selected_features_PSO');
-    predicted_y_val_pso = predicted_y_pso(val_data_starts(i):val_data_starts(i)+24);
-    predicted_y_train_pso = predicted_y_pso(train_ind);
+        % training data
+        training_data = selected_features_PSO(train_ind,:);
+        training_label = Train_Label(train_ind);
 
-    % find the best threshold for making the outputs int
-    [X,Y,T,AUC,OPTROCPT] = perfcurve(training_label,predicted_y_train_pso,1);
-    T_opt = T((X==OPTROCPT(1))&(Y==OPTROCPT(2)));
+        % train the network and get the predicted outputs
+        [net , tr] = train(net, training_data', training_label);
+        predicted_y_pso = net(selected_features_PSO');
+        predicted_y_val_pso = predicted_y_pso(val_data_starts(i):val_data_starts(i)+24);
+        predicted_y_train_pso = predicted_y_pso(train_ind);
 
-    % binarize the outputs
-    predicted_y_val_pso = (predicted_y_val_pso >= T_opt);
-    predicted_y_train_pso = (predicted_y_train_pso >= T_opt);
+        % find the best threshold for making the outputs int
+        [X,Y,T,AUC,OPTROCPT] = perfcurve(training_label,predicted_y_train_pso,1);
+        T_opt = T((X==OPTROCPT(1))&(Y==OPTROCPT(2)));
 
-    val_acc_pso(i) = sum(predicted_y_val_pso == val_label)/length(predicted_y_val_pso);
-    train_acc_pso(i) = sum(predicted_y_train_pso == training_label)/length(predicted_y_train_pso);
+        % binarize the outputs
+        predicted_y_val_pso = (predicted_y_val_pso >= T_opt);
+        predicted_y_train_pso = (predicted_y_train_pso >= T_opt);
+
+        val_acc_pso(i) = sum(predicted_y_val_pso == val_label)/length(predicted_y_val_pso);
+        train_acc_pso(i) = sum(predicted_y_train_pso == training_label)/length(predicted_y_train_pso);
+    end
+    val_acc_pso_rep(j) = mean(val_acc_pso);
+    train_acc_pso_rep(j) = mean(train_acc_pso);
 end
 
-acc_val_kfold_pso = mean(val_acc_pso)
-train_acc_kfold_pso = mean(train_acc_pso)
+acc_val_kfold_pso = mean(val_acc_pso_rep)
+train_acc_kfold_pso = mean(train_acc_pso_rep)
+std_val_acc = std(val_acc_pso_rep)
+std_train_acc = std(train_acc_pso_rep)
 
 %% train the mlp with all data and get the outputs of MLP for the test data
 %%%%%%%%%%%%%%%%%%%%%%%%% with PSO features %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -888,7 +982,7 @@ while i <= number_of_rep
     predicted_y_train_pso = (predicted_y_train_pso >= T_opt(i));
     train_acc_pso = sum(predicted_y_train_pso == training_label)/length(predicted_y_train_pso)
 
-    if(train_acc_pso >= 0.65)
+    if(train_acc_pso >= 0.75)
         test_labels(i,:) = net(test_features_PSO);
         i = i+1;
     end
@@ -905,45 +999,55 @@ clc; close all;
 
 % accuracy vectors
 k_fold = 5;
-train_acc_rbf_pso = zeros(1,k_fold);
-val_acc_rbf_pso = zeros(1,k_fold);
+
+n_rep = 100;
+val_acc_pso_rep = zeros(1,n_rep);
+train_acc_pso_rep = zeros(1,n_rep);
 
 
 val_data_starts = [1, 24, 48, 72, 96];
 
-for i = 1:k_fold
-    train_ind = 1:120;
-
-    % validation data
-    val_data = selected_features_PSO(val_data_starts(i):val_data_starts(i)+24,:);
-    val_label = Train_Label(val_data_starts(i):val_data_starts(i)+24);
-    train_ind(val_data_starts(i):val_data_starts(i)+24) = [];
-
-    % training data
-    training_data = selected_features_PSO(train_ind,:);
-    training_label = Train_Label(train_ind);
-
+for j = 1:n_rep
     % train the network and get the predicted outputs
-    net_rbf = newrb(training_data', training_label, 0.3, 6);
-    % view(net)
-    predicted_y_pso = net_rbf(selected_features_PSO');
-    predicted_y_val_pso = predicted_y_pso(val_data_starts(i):val_data_starts(i)+24);
-    predicted_y_train_pso = predicted_y_pso(train_ind);
+    train_acc_rbf_pso = zeros(1,k_fold);
+    val_acc_rbf_pso = zeros(1,k_fold);
+    net_rbf = newrb(training_data', training_label, 0.6, 20);
+    for i = 1:k_fold
+        train_ind = 1:120;
 
-    % find the best threshold for making the outputs int
-    [X,Y,T,AUC,OPTROCPT] = perfcurve(training_label,predicted_y_train_pso,1);
-    T_opt = T((X==OPTROCPT(1))&(Y==OPTROCPT(2)));
+        % validation data
+        val_data = selected_features_PSO(val_data_starts(i):val_data_starts(i)+24,:);
+        val_label = Train_Label(val_data_starts(i):val_data_starts(i)+24);
+        train_ind(val_data_starts(i):val_data_starts(i)+24) = [];
 
-    % binarize the outputs
-    predicted_y_val_pso = (predicted_y_val_pso >= T_opt);
-    predicted_y_train_pso = (predicted_y_train_pso >= T_opt);
+        % training data
+        training_data = selected_features_PSO(train_ind,:);
+        training_label = Train_Label(train_ind);
 
-    val_acc_rbf_pso(i) = sum(predicted_y_val_pso == val_label)/length(predicted_y_val_pso);
-    train_acc_rbf_pso(i) = sum(predicted_y_train_pso == training_label)/length(predicted_y_train_pso);
+        % view(net)
+        predicted_y_pso = net_rbf(selected_features_PSO');
+        predicted_y_val_pso = predicted_y_pso(val_data_starts(i):val_data_starts(i)+24);
+        predicted_y_train_pso = predicted_y_pso(train_ind);
+
+        % find the best threshold for making the outputs int
+        [X,Y,T,AUC,OPTROCPT] = perfcurve(training_label,predicted_y_train_pso,1);
+        T_opt = T((X==OPTROCPT(1))&(Y==OPTROCPT(2)));
+
+        % binarize the outputs
+        predicted_y_val_pso = (predicted_y_val_pso >= T_opt);
+        predicted_y_train_pso = (predicted_y_train_pso >= T_opt);
+
+        val_acc_rbf_pso(i) = sum(predicted_y_val_pso == val_label)/length(predicted_y_val_pso);
+        train_acc_rbf_pso(i) = sum(predicted_y_train_pso == training_label)/length(predicted_y_train_pso);
+    end
+    val_acc_pso_rep(j) = mean(val_acc_pso);
+    train_acc_pso_rep(j) = mean(train_acc_pso);
 end
 
-acc_val_kfold_rbf_pso = mean(val_acc_rbf_pso)
-train_acc_kfold_rbf_pso = mean(train_acc_rbf_pso)
+acc_val_kfold_pso = mean(val_acc_pso_rep)
+train_acc_kfold_pso = mean(train_acc_pso_rep)
+std_val_acc = std(val_acc_pso_rep)
+std_train_acc = std(train_acc_pso_rep)
 
 %% train the rbf with all data and get the outputs of rbf for the test data
 %%%%%%%%%%%%%%%%%%%%%%%%% with PSO features %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -963,7 +1067,7 @@ training_label = Train_Label;
 i = 1;
 while i <= number_of_rep
     % train the network and get the predicted outputs
-    net_rbf_pso = newrb(training_data', training_label, 0, 1, 6);
+    net_rbf_pso = newrb(training_data', training_label, 0.6, 20);
 
     % view(net)
     predicted_y_pso = net_rbf_pso(selected_features_PSO');
@@ -978,9 +1082,9 @@ while i <= number_of_rep
 
     train_acc_rbf = sum(predicted_y_train_pso == training_label)/length(predicted_y_train_pso)
 
-    if(train_acc_rbf > 0.6)
+    if(train_acc_rbf > 0.70)
         % binarize the outputs
-        test_labels_rbf(i,:) = net(test_features_PSO');
+        test_labels_rbf(i,:) = net(test_features_PSO);
         i = i+1;
     end
 end
@@ -991,4 +1095,5 @@ predicted_y_test_rbf_PSO = (mean(test_labels_rbf, 1) >= mean(T_opt))
 save('predicted_y_test_rbf_PSO','predicted_y_test_rbf_PSO')
 
 %% consistancy of test labels with mlp and mlp PSO
-consistency_mlp_rbf = sum(predicted_y_test_PSO == predicted_y_test)/40
+consistency_mlp_rbf_pso = sum(predicted_y_test_PSO == predicted_y_test_rbf_PSO)/40
+consistency_mlps = sum(predicted_y_test_PSO == predicted_y_test)/40

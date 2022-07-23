@@ -33,7 +33,7 @@ function x_swarm = PSO_feature_selection(all_features, n_features)
     t = 1;
     b1 = rand(1); b2 = rand(1);
     v = zeros(n_particles, n_features, 2);
-    J_thresh = 0.08;
+    J_thresh = 0.07;
     
     while (sum(all_j_scores{end} >= J_thresh) < n_particles || t < 100)
         for i = 1:n_particles
@@ -42,9 +42,7 @@ function x_swarm = PSO_feature_selection(all_features, n_features)
                 b2*(x_best_global - x_swarm(i,:));
             x_swarm(i,:) = round(x_swarm(i,:) + v(i,:,2));
             
-            if(length(unique(x_swarm(i,:)) ~= n_features))
-                x_swarm(i,:) = round(x_swarm(i,:) - 0.1*rand());
-            end
+            if(length(unique(x_swarm(i,:)) ~= n_features)
             
             % number of features bounderies [1, 179]
             n_all_features = size(all_features, 3);
