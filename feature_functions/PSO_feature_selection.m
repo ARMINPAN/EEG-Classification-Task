@@ -43,7 +43,7 @@ function x_swarm = PSO_feature_selection(all_features, n_features)
             x_swarm(i,:) = round(x_swarm(i,:) + v(i,:,2));
             
             if(length(unique(x_swarm(i,:)) ~= n_features))
-                x_swarm(i,:) = round(x_swarm(i,:) - 0.1*rand());
+                x_swarm(i,:) = round(x_swarm(i,:) - 0.5*rand());
             end
             
             % number of features bounderies [1, 179]

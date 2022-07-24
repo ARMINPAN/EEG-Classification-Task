@@ -634,7 +634,7 @@ end
 %% final feature cell
 
 best_features_found = group_features_both(:,target_feature);
-save('best_features_found','best_features_found')
+% save('best_features_found','best_features_found')
 
 %% best features index founded eventually 
 clc; close all;
@@ -663,7 +663,7 @@ for j = 1:n_rep
     trainFcn = 'trainlm';
 
     % create the network
-    net = fitnet([5,5]  , trainFcn);
+    net = fitnet([5,4]  , trainFcn);
     
     for i = 1:k_fold
         train_ind = 1:120;
@@ -729,7 +729,7 @@ training_label = Train_Label;
 i = 1;
 while i <= number_of_rep
     % create the network
-    net = fitnet([20, 10]  , trainFcn);
+    net = fitnet([5, 4]  , trainFcn);
 
     % train the network and get the predicted outputs
     [net , tr] = train(net, training_data', training_label);
@@ -908,7 +908,7 @@ for j = 1:n_rep
     trainFcn = 'trainlm';
 
     % create the network
-    net = fitnet([20, 10]  , trainFcn);
+    net = fitnet([5, 5]  , trainFcn);
     
     for i = 1:k_fold
         train_ind = 1:120;
@@ -967,7 +967,7 @@ training_label = Train_Label;
 i = 1;
 while i <= number_of_rep
     % create the network
-    net = fitnet([20, 10]  , trainFcn);
+    net = fitnet([5, 5]  , trainFcn);
 
     % train the network and get the predicted outputs
     [net , tr] = train(net, training_data', training_label);
@@ -1082,7 +1082,7 @@ while i <= number_of_rep
 
     train_acc_rbf = sum(predicted_y_train_pso == training_label)/length(predicted_y_train_pso)
 
-    if(train_acc_rbf > 0.70)
+    if(train_acc_rbf > 0.65)
         % binarize the outputs
         test_labels_rbf(i,:) = net(test_features_PSO);
         i = i+1;
@@ -1096,4 +1096,4 @@ save('predicted_y_test_rbf_PSO','predicted_y_test_rbf_PSO')
 
 %% consistancy of test labels with mlp and mlp PSO
 consistency_mlp_rbf_pso = sum(predicted_y_test_PSO == predicted_y_test_rbf_PSO)/40
-consistency_mlps = sum(predicted_y_test_PSO == predicted_y_test)/40
+consistency_two_features = sum(predicted_y_test_PSO == predicted_y_test)/40
