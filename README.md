@@ -1,2 +1,3 @@
 # EEG-Classification-Task
-A BCI classification task using RBF &amp; MLP
+
+A BCI classification task using RBF & MLP & PSO
